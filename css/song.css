@@ -1,0 +1,170 @@
+/* 基礎重置與全局設定 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #0a0a0a 30%, #1a1a1a 100%);
+    color: #e0e0e0;
+    font-family: 'Noto Sans TC', 'Segoe UI', system-ui;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+  
+  /* 圖片藝術化處理 */
+  img#bg {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    filter: grayscale(20%) contrast(110%);
+  }
+  
+  /* 導航按鈕進階特效 */
+  a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    color: #00ff88;
+    text-decoration: none;
+    border: 2px solid #2a2a2a;
+    border-radius: 50px;
+    background: rgba(26,26,26,0.8);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, 
+      rgba(0,255,136,0.1) 0%, 
+      rgba(0,255,136,0) 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,255,136,0.2);
+    border-color: #00ff88;
+  }
+  
+  a:hover::before {
+    opacity: 1;
+  }
+  
+  /* 內容區塊設計 */
+  div[id] {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+  
+  div[id].visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* 動態標題特效 */
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+  }
+  
+  h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #00ff88;
+    border-radius: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    img#bg {
+      max-height: 40vh;
+    }
+    
+    a {
+      display: block;
+      width: 90%;
+      margin: 1rem auto;
+    }
+  }
+    
+  
+  /* 在 ../css/song.css 新增以下样式 */
+a[href="#home"] {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(0,255,136,0.2);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    opacity: 0.9;
+    transform: scale(0.95);
+  }
+  
+  a[href="#home"]::before {
+    content: "↑";
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    transition: transform 0.3s;
+  }
+  
+  a[href="#home"]:hover {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 5px 25px rgba(0,255,136,0.4);
+  }
+  
+  a[href="#home"]:hover::before {
+    transform: translateY(-3px);
+  }
+  
+  /* 滚动时动态显示 */
+  a[href="#home"] {
+    visibility: hidden;
+    transition: visibility 0.3s, opacity 0.3s;
+  }
+  
+  body.scrolled a[href="#home"] {
+    visibility: visible;
+  }
+  
+  @media (max-width: 768px) {
+    a[href="#home"] {
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+    }
+  }
+  
