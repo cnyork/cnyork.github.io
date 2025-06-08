@@ -168,3 +168,70 @@ a[href="#home"] {
     }
   }
   
+
+
+
+/* 固定導航列樣式 */
+#fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0);
+  padding: 15px 0;
+  z-index: 1000;
+  text-align: center; /* 保持連結居中 */
+}
+
+/* 防止內容被導航列遮擋 */
+body {
+  padding-top: 60px; /* 依導航列高度調整 */ 
+}
+
+/* 導航連結樣式 */
+#fixed-nav a {
+  margin: 0 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+#fixed-nav a:hover {
+  color: #ccffc2;
+}
+
+.wrap {
+  display: flex; /*水平並列*/
+  align-items: center; /*配置在垂直居中處*/
+  width: 1250px;
+}
+
+.image {
+  width: 50%;
+  display: block;
+  height: auto;
+  border-radius: 10px;
+}
+
+.text {
+  padding: 0 100px; /*文字的左右兩側空隙*/
+  width: 50%;
+}
+
+
+.center {
+  left: 50%;
+  right: 50%;
+}
+
+#bg {
+  width: 500px;
+  height: auto;
+}
+
+.songtext{
+  color: #f0fff4;
+  font-size: 20px;
+  width: 400px;
+}
+

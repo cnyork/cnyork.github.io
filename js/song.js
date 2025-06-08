@@ -79,3 +79,46 @@ window.addEventListener('scroll', () => {
     });
   });
     
+
+  // 滾動行為偵測
+let lastScrollPos = 0;
+const navElement = document.getElementById('dynamic-nav');
+const scrollThreshold = 100; // 滾動敏感度閥值
+
+window.addEventListener('scroll', () => {
+    const currentScrollPos = window.pageYOffset;
+    
+    // 頂部強制顯示
+    if (currentScrollPos <= 50) {
+        navElement.classList.remove('nav-hidden');
+        navElement.classList.add('nav-visible');
+        return;
+    }
+
+    // 滾動方向判斷
+    if (Math.abs(currentScrollPos - lastScrollPos) > scrollThreshold) {
+        if (currentScrollPos > lastScrollPos) {
+            // 向下滾動隱藏
+            navElement.classList.add('nav-hidden');
+            navElement.classList.remove('nav-visible');
+        } else {
+            // 向上滾動顯示
+            navElement.classList.remove('nav-hidden');
+            navElement.classList.add('nav-visible');
+        }
+        lastScrollPos = currentScrollPos;
+    }
+});
+
+const audio = document.getElementById('main-audio');
+const playBtn = document.querySelector('.play-btn');
+
+playBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playBtn.textContent = '⏸';
+  } else {
+    audio.pause();
+    playBtn.textContent = '▶';
+  }
+});
